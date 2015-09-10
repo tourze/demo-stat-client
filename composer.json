@@ -1,0 +1,32 @@
+{
+  "name": "tourze/stat",
+  "description": "Stat系统的client部分",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "tourze",
+      "email": "dev@tourze.com"
+    }
+  ],
+  "require": {
+    "tourze/base": "^1.0",
+    "tourze/http": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "tourze\\Stat\\": "src/"
+    },
+    "files": [
+      "bootstrap.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "tourze\\Stat\\": "tests/"
+    },
+    "files": [
+      "bootstrap-dev.php"
+    ]
+  }
+}
