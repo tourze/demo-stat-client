@@ -1,6 +1,6 @@
 <?php
 
-namespace tourze\Tourze\Statistic;
+namespace tourze\Stat;
 
 /**
  *

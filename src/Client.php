@@ -1,6 +1,7 @@
 <?php
 
-namespace tourze\Tourze\Statistic;
+namespace tourze\Stat;
+
 use tourze\Base\Helper\Arr;
 use tourze\Http\Request;
 
