@@ -78,10 +78,10 @@ class Protocol
         // 防止msg过长
         $moduleNameLength = strlen($module);
         $interfaceNameLength = strlen($interface);
-        $available_size = self::MAX_UDP_PACKGE_SIZE - self::PACKAGE_FIXED_LENGTH - $moduleNameLength - $interfaceNameLength;
-        if (strlen($msg) > $available_size)
+        $availableSize = self::MAX_UDP_PACKGE_SIZE - self::PACKAGE_FIXED_LENGTH - $moduleNameLength - $interfaceNameLength;
+        if (strlen($msg) > $availableSize)
         {
-            $msg = substr($msg, 0, $available_size);
+            $msg = substr($msg, 0, $availableSize);
         }
 
         // 打包

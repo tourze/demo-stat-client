@@ -2,6 +2,7 @@
 
 namespace tourze\Stat;
 
+use tourze\Base\Base;
 use tourze\Base\Helper\Arr;
 use tourze\Http\Request;
 
@@ -50,7 +51,7 @@ class Client
      * @param string $interface
      * @return mixed
      */
-    public static function tick($module = '', $interface = '')
+    public static function tick($module, $interface)
     {
         if ( ! isset(self::$timeMap[$module]))
         {
@@ -94,22 +95,34 @@ class Client
         $reportAddress = $reportAddress ? $reportAddress : self::$reportAddress;
         if (isset(self::$timeMap[$module][$interface]) && self::$timeMap[$module][$interface] > 0)
         {
-            $time_start = self::$timeMap[$module][$interface];
+            $startTime = self::$timeMap[$module][$interface];
             self::$timeMap[$module][$interface] = 0;
         }
         else if (isset(self::$timeMap['']['']) && self::$timeMap[''][''] > 0)
         {
-            $time_start = self::$timeMap[''][''];
+            $startTime = self::$timeMap[''][''];
             self::$timeMap[''][''] = 0;
         }
         else
         {
-            $time_start = microtime(true);
+            $startTime = microtime(true);
         }
 
-        $cost_time = microtime(true) - $time_start;
+        //echo "\n";
+        //echo $startTime . "\n";
 
-        $binData = Protocol::encode($module, $interface, $cost_time, $success, $code, $msg);
+        $endTime = microtime(true);
+
+        //echo $endTime . "\n";
+
+        $costTime = $endTime - $startTime;
+
+        //echo $costTime . "\n";
+
+        $binData = Protocol::encode($module, $interface, $costTime, $success, $code, $msg);
+        Base::getLog()->debug(__METHOD__ . ' prepare bin data', [
+            'bin' => $binData,
+        ]);
 
         return self::sendData($reportAddress, $binData);
     }
