@@ -3,39 +3,17 @@
 namespace tourze\Stat;
 
 use tourze\Base\Base;
+use tourze\Base\Config;
 use tourze\Base\Helper\Arr;
 use tourze\Http\Request;
 
 /**
- * 统计客户端，调用方法：
+ * 统计客户端
  *
- * // 统计开始
- * Client::tick("User", 'getInfo');
- * // 统计的产生，接口调用是否成功、错误码、错误日志
- * $success = true; $code = 0; $msg = '';
- * // 假如有个User::getInfo方法要监控
- * $user_info = User::getInfo();
- * if( ! $user_info)
- * {
- *     // 标记失败
- *     $success = false;
- *     // 获取错误码，假如getErrCode()获得
- *     $code = User::getErrCode();
- *     // 获取错误日志，假如getErrMsg()获得
- *     $msg = User::getErrMsg();
- * }
- * // 上报结果
- * Client::report('User', 'getInfo', $success, $code, $msg);
- *
- * @author workerman.net
+ * @package tourze\Stat
  */
 class Client
 {
-
-    /**
-     * @var string 默认上报地址
-     */
-    public static $reportAddress = 'udp://127.0.0.1:55656';
 
     /**
      * [module=>[interface=>time_start, interface=>time_start ...], module=>[interface=>time_start ..], ... ]
@@ -92,7 +70,7 @@ class Client
             $msg = str_replace('[ua]', Request::$userAgent, $msg);
         }
 
-        $reportAddress = $reportAddress ? $reportAddress : self::$reportAddress;
+        $reportAddress = $reportAddress ? $reportAddress : Config::load('statClient')->get('ip');
         if (isset(self::$timeMap[$module][$interface]) && self::$timeMap[$module][$interface] > 0)
         {
             $startTime = self::$timeMap[$module][$interface];
