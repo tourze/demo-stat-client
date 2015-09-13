@@ -1,6 +1,6 @@
 <?php
 
-namespace tourze\Stat;
+namespace tourze\StatClient;
 
 use tourze\Base\Base;
 use tourze\Base\Config;
@@ -10,9 +10,9 @@ use tourze\Http\Request;
 /**
  * 统计客户端
  *
- * @package tourze\Stat
+ * @package tourze\StatClient
  */
-class Client
+class StatClient
 {
 
     /**

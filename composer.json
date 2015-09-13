@@ -1,6 +1,6 @@
 {
-  "name": "tourze/stat",
-  "description": "Stat系统的client部分",
+  "name": "tourze/stat-client",
+  "description": "Stat系统的客户端部分",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
@@ -18,7 +18,7 @@
   },
   "autoload": {
     "psr-4": {
-      "tourze\\Stat\\": "src/"
+      "tourze\\StatClient\\": "src/"
     },
     "files": [
       "bootstrap.php"
@@ -26,7 +26,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "tourze\\Stat\\": "tests/"
+      "tourze\\StatClient\\": "tests/"
     },
     "files": [
       "bootstrap-dev.php"

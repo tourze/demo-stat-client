@@ -18,10 +18,10 @@
 
 代码示例：
 
-    use tourze\Stat\Client;
+    use tourze\StatClient\StatClient;
     
     // 统计开始
-    Client::tick("User", 'getInfo');
+    StatClient::tick("User", 'getInfo');
     // 统计的产生，接口调用是否成功、错误码、错误日志
     $success = true; $code = 0; $msg = '';
     // 假如有个User::getInfo方法要监控
@@ -37,5 +37,5 @@
         $msg = User::getErrMsg();
     }
     // 上报结果
-    Client::report('User', 'getInfo', $success, $code, $msg);
+    StatClient::report('User', 'getInfo', $success, $code, $msg);
 

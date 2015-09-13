@@ -1,6 +1,6 @@
 <?php
 
-namespace tourze\Stat;
+namespace tourze\StatClient;
 
 /**
  * 协议相关内容
@@ -20,7 +20,7 @@ namespace tourze\Stat;
  * }
  *
  *
- * @package tourze\Stat
+ * @package tourze\StatClient
  */
 class Protocol
 {
