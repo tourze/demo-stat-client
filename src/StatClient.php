@@ -63,11 +63,11 @@ class StatClient
 
         if (strpos($msg, '[ip]') !== false)
         {
-            $msg = str_replace('[ip]', Request::$clientIp, $msg);
+            $msg = str_replace('[ip]', Arr::get($_SERVER, 'REMOTE_ADDR'), $msg);
         }
         if (strpos($msg, '[ua]') !== false)
         {
-            $msg = str_replace('[ua]', Request::$userAgent, $msg);
+            $msg = str_replace('[ua]', Arr::get($_SERVER, 'HTTP_USER_AGENT'), $msg);
         }
 
         $reportAddress = $reportAddress ? $reportAddress : Config::load('statClient')->get('ip');
