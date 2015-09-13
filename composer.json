@@ -2,7 +2,7 @@
   "name": "tourze/stat-client",
   "description": "Stat系统的客户端部分",
   "minimum-stability": "stable",
-  "license": "proprietary",
+  "license": "MIT",
   "authors": [
     {
       "name": "tourze",
